@@ -1,0 +1,1041 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="horariModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="asignatura">
+          <Key>
+            <PropertyRef Name="idAsignatura" />
+          </Key>
+          <Property Name="idAsignatura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="clave" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="45" Nullable="false" />
+          <Property Name="cuatrimestre" Type="int" />
+        </EntityType>
+        <EntityType Name="asignaturacarrera">
+          <Key>
+            <PropertyRef Name="idCarreraAsignatura" />
+          </Key>
+          <Property Name="idCarreraAsignatura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="carrera" Type="int" Nullable="false" />
+          <Property Name="asignatura" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="carrera">
+          <Key>
+            <PropertyRef Name="idCarrera" />
+          </Key>
+          <Property Name="idCarrera" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="clave" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="45" Nullable="false" />
+          <Property Name="tipo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="carrerarevoe">
+          <Key>
+            <PropertyRef Name="idCarreraRevoe" />
+          </Key>
+          <Property Name="idCarreraRevoe" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="carrera" Type="int" Nullable="false" />
+          <Property Name="revoe" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cuatrimestre">
+          <Key>
+            <PropertyRef Name="clave" />
+          </Key>
+          <Property Name="clave" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="6" Nullable="false" />
+        </EntityType>
+        <EntityType Name="curso">
+          <Key>
+            <PropertyRef Name="idCurso" />
+          </Key>
+          <Property Name="idCurso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="grupo" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="cuatrimestre" Type="int" Nullable="false" />
+          <Property Name="turno" Type="int" Nullable="false" />
+          <Property Name="asignatura" Type="int" Nullable="false" />
+          <Property Name="control" Type="nvarchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="disponibilidad">
+          <Key>
+            <PropertyRef Name="idHorario" />
+          </Key>
+          <Property Name="idHorario" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="profesor" Type="nvarchar" MaxLength="5" />
+          <Property Name="dia" Type="bigint" Nullable="false" />
+          <Property Name="horas" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="grupo">
+          <Key>
+            <PropertyRef Name="clave" />
+          </Key>
+          <Property Name="clave" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="150" />
+          <Property Name="turno" Type="int" />
+        </EntityType>
+        <EntityType Name="hora">
+          <Key>
+            <PropertyRef Name="idHora" />
+          </Key>
+          <Property Name="idHora" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="momento" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="horario">
+          <Key>
+            <PropertyRef Name="idHorario" />
+          </Key>
+          <Property Name="idHorario" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="curso" Type="int" Nullable="false" />
+          <Property Name="inicio" Type="bigint" Nullable="false" />
+          <Property Name="fin" Type="bigint" Nullable="false" />
+          <Property Name="dia" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="profesor">
+          <Key>
+            <PropertyRef Name="control" />
+          </Key>
+          <Property Name="control" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="45" Nullable="false" />
+          <Property Name="primer" Type="nvarchar" MaxLength="45" Nullable="false" />
+          <Property Name="segundo" Type="nvarchar" MaxLength="45" />
+          <Property Name="passwd" Type="nvarchar" MaxLength="64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="revoe">
+          <Key>
+            <PropertyRef Name="idRevoe" />
+          </Key>
+          <Property Name="idRevoe" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="anio" Type="nvarchar" MaxLength="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="semana">
+          <Key>
+            <PropertyRef Name="idSemana" />
+          </Key>
+          <Property Name="idSemana" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dia" Type="nvarchar" MaxLength="9" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tipocarrera">
+          <Key>
+            <PropertyRef Name="idTipoCarrera" />
+          </Key>
+          <Property Name="idTipoCarrera" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="11" Nullable="false" />
+        </EntityType>
+        <EntityType Name="turno">
+          <Key>
+            <PropertyRef Name="clave" />
+          </Key>
+          <Property Name="clave" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_asignaturacarrera_asignatura">
+          <End Role="asignatura" Type="Self.asignatura" Multiplicity="1" />
+          <End Role="asignaturacarrera" Type="Self.asignaturacarrera" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="asignatura">
+              <PropertyRef Name="idAsignatura" />
+            </Principal>
+            <Dependent Role="asignaturacarrera">
+              <PropertyRef Name="asignatura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_asignaturacarrera_carrerarevoe">
+          <End Role="carrerarevoe" Type="Self.carrerarevoe" Multiplicity="1" />
+          <End Role="asignaturacarrera" Type="Self.asignaturacarrera" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="carrerarevoe">
+              <PropertyRef Name="idCarreraRevoe" />
+            </Principal>
+            <Dependent Role="asignaturacarrera">
+              <PropertyRef Name="carrera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_carrera_tipocarrera">
+          <End Role="tipocarrera" Type="Self.tipocarrera" Multiplicity="1" />
+          <End Role="carrera" Type="Self.carrera" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipocarrera">
+              <PropertyRef Name="idTipoCarrera" />
+            </Principal>
+            <Dependent Role="carrera">
+              <PropertyRef Name="tipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_carrerarevoe_carrera">
+          <End Role="carrera" Type="Self.carrera" Multiplicity="1" />
+          <End Role="carrerarevoe" Type="Self.carrerarevoe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="carrera">
+              <PropertyRef Name="idCarrera" />
+            </Principal>
+            <Dependent Role="carrerarevoe">
+              <PropertyRef Name="carrera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_carrerarevoe_revoe">
+          <End Role="revoe" Type="Self.revoe" Multiplicity="1" />
+          <End Role="carrerarevoe" Type="Self.carrerarevoe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="revoe">
+              <PropertyRef Name="idRevoe" />
+            </Principal>
+            <Dependent Role="carrerarevoe">
+              <PropertyRef Name="revoe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_curso_asignatura">
+          <End Role="asignaturacarrera" Type="Self.asignaturacarrera" Multiplicity="1" />
+          <End Role="curso" Type="Self.curso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="asignaturacarrera">
+              <PropertyRef Name="idCarreraAsignatura" />
+            </Principal>
+            <Dependent Role="curso">
+              <PropertyRef Name="asignatura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_curso_control">
+          <End Role="profesor" Type="Self.profesor" Multiplicity="0..1" />
+          <End Role="curso" Type="Self.curso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="profesor">
+              <PropertyRef Name="control" />
+            </Principal>
+            <Dependent Role="curso">
+              <PropertyRef Name="control" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_curso_cuatrimestre">
+          <End Role="cuatrimestre" Type="Self.cuatrimestre" Multiplicity="1" />
+          <End Role="curso" Type="Self.curso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cuatrimestre">
+              <PropertyRef Name="clave" />
+            </Principal>
+            <Dependent Role="curso">
+              <PropertyRef Name="cuatrimestre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_curso_grupo">
+          <End Role="grupo" Type="Self.grupo" Multiplicity="1" />
+          <End Role="curso" Type="Self.curso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="grupo">
+              <PropertyRef Name="clave" />
+            </Principal>
+            <Dependent Role="curso">
+              <PropertyRef Name="grupo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_curso_turno">
+          <End Role="turno" Type="Self.turno" Multiplicity="1" />
+          <End Role="curso" Type="Self.curso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="turno">
+              <PropertyRef Name="clave" />
+            </Principal>
+            <Dependent Role="curso">
+              <PropertyRef Name="turno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_grupo_turno">
+          <End Role="turno" Type="Self.turno" Multiplicity="0..1" />
+          <End Role="grupo" Type="Self.grupo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="turno">
+              <PropertyRef Name="clave" />
+            </Principal>
+            <Dependent Role="grupo">
+              <PropertyRef Name="turno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_horario_profesor">
+          <End Role="profesor" Type="Self.profesor" Multiplicity="0..1" />
+          <End Role="disponibilidad" Type="Self.disponibilidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="profesor">
+              <PropertyRef Name="control" />
+            </Principal>
+            <Dependent Role="disponibilidad">
+              <PropertyRef Name="profesor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_horario_semana">
+          <End Role="semana" Type="Self.semana" Multiplicity="1" />
+          <End Role="disponibilidad" Type="Self.disponibilidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="semana">
+              <PropertyRef Name="idSemana" />
+            </Principal>
+            <Dependent Role="disponibilidad">
+              <PropertyRef Name="dia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="horario_ibfk_1">
+          <End Role="curso" Type="Self.curso" Multiplicity="1" />
+          <End Role="horario" Type="Self.horario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="curso">
+              <PropertyRef Name="idCurso" />
+            </Principal>
+            <Dependent Role="horario">
+              <PropertyRef Name="curso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="horario_ibfk_2">
+          <End Role="hora" Type="Self.hora" Multiplicity="1" />
+          <End Role="horario" Type="Self.horario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hora">
+              <PropertyRef Name="idHora" />
+            </Principal>
+            <Dependent Role="horario">
+              <PropertyRef Name="fin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="horario_ibfk_3">
+          <End Role="hora" Type="Self.hora" Multiplicity="1" />
+          <End Role="horario" Type="Self.horario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hora">
+              <PropertyRef Name="idHora" />
+            </Principal>
+            <Dependent Role="horario">
+              <PropertyRef Name="inicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="horario_ibfk_4">
+          <End Role="semana" Type="Self.semana" Multiplicity="1" />
+          <End Role="horario" Type="Self.horario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="semana">
+              <PropertyRef Name="idSemana" />
+            </Principal>
+            <Dependent Role="horario">
+              <PropertyRef Name="dia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="horariModelStoreContainer">
+          <EntitySet Name="asignatura" EntityType="Self.asignatura" Schema="horari" store:Type="Tables" />
+          <EntitySet Name="asignaturacarrera" EntityType="Self.asignaturacarrera" Schema="horari" store:Type="Tables" />
+          <EntitySet Name="carrera" EntityType="Self.carrera" Schema="horari" store:Type="Tables" />
+          <EntitySet Name="carrerarevoe" EntityType="Self.carrerarevoe" Schema="horari" store:Type="Tables" />
+          <EntitySet Name="cuatrimestre" EntityType="Self.cuatrimestre" Schema="horari" store:Type="Tables" />
+          <EntitySet Name="curso" EntityType="Self.curso" Schema="horari" store:Type="Tables" />
+          <EntitySet Name="disponibilidad" EntityType="Self.disponibilidad" Schema="horari" store:Type="Tables" />
+          <EntitySet Name="grupo" EntityType="Self.grupo" Schema="horari" store:Type="Tables" />
+          <EntitySet Name="hora" EntityType="Self.hora" Schema="horari" store:Type="Tables" />
+          <EntitySet Name="horario" EntityType="Self.horario" Schema="horari" store:Type="Tables" />
+          <EntitySet Name="profesor" EntityType="Self.profesor" Schema="horari" store:Type="Tables" />
+          <EntitySet Name="revoe" EntityType="Self.revoe" Schema="horari" store:Type="Tables" />
+          <EntitySet Name="semana" EntityType="Self.semana" Schema="horari" store:Type="Tables" />
+          <EntitySet Name="tipocarrera" EntityType="Self.tipocarrera" Schema="horari" store:Type="Tables" />
+          <EntitySet Name="turno" EntityType="Self.turno" Schema="horari" store:Type="Tables" />
+          <AssociationSet Name="fk_asignaturacarrera_asignatura" Association="Self.fk_asignaturacarrera_asignatura">
+            <End Role="asignatura" EntitySet="asignatura" />
+            <End Role="asignaturacarrera" EntitySet="asignaturacarrera" />
+          </AssociationSet>
+          <AssociationSet Name="fk_asignaturacarrera_carrerarevoe" Association="Self.fk_asignaturacarrera_carrerarevoe">
+            <End Role="carrerarevoe" EntitySet="carrerarevoe" />
+            <End Role="asignaturacarrera" EntitySet="asignaturacarrera" />
+          </AssociationSet>
+          <AssociationSet Name="fk_carrera_tipocarrera" Association="Self.fk_carrera_tipocarrera">
+            <End Role="tipocarrera" EntitySet="tipocarrera" />
+            <End Role="carrera" EntitySet="carrera" />
+          </AssociationSet>
+          <AssociationSet Name="fk_carrerarevoe_carrera" Association="Self.fk_carrerarevoe_carrera">
+            <End Role="carrera" EntitySet="carrera" />
+            <End Role="carrerarevoe" EntitySet="carrerarevoe" />
+          </AssociationSet>
+          <AssociationSet Name="fk_carrerarevoe_revoe" Association="Self.fk_carrerarevoe_revoe">
+            <End Role="revoe" EntitySet="revoe" />
+            <End Role="carrerarevoe" EntitySet="carrerarevoe" />
+          </AssociationSet>
+          <AssociationSet Name="fk_curso_asignatura" Association="Self.fk_curso_asignatura">
+            <End Role="asignaturacarrera" EntitySet="asignaturacarrera" />
+            <End Role="curso" EntitySet="curso" />
+          </AssociationSet>
+          <AssociationSet Name="fk_curso_control" Association="Self.fk_curso_control">
+            <End Role="profesor" EntitySet="profesor" />
+            <End Role="curso" EntitySet="curso" />
+          </AssociationSet>
+          <AssociationSet Name="fk_curso_cuatrimestre" Association="Self.fk_curso_cuatrimestre">
+            <End Role="cuatrimestre" EntitySet="cuatrimestre" />
+            <End Role="curso" EntitySet="curso" />
+          </AssociationSet>
+          <AssociationSet Name="fk_curso_grupo" Association="Self.fk_curso_grupo">
+            <End Role="grupo" EntitySet="grupo" />
+            <End Role="curso" EntitySet="curso" />
+          </AssociationSet>
+          <AssociationSet Name="fk_curso_turno" Association="Self.fk_curso_turno">
+            <End Role="turno" EntitySet="turno" />
+            <End Role="curso" EntitySet="curso" />
+          </AssociationSet>
+          <AssociationSet Name="fk_grupo_turno" Association="Self.fk_grupo_turno">
+            <End Role="turno" EntitySet="turno" />
+            <End Role="grupo" EntitySet="grupo" />
+          </AssociationSet>
+          <AssociationSet Name="fk_horario_profesor" Association="Self.fk_horario_profesor">
+            <End Role="profesor" EntitySet="profesor" />
+            <End Role="disponibilidad" EntitySet="disponibilidad" />
+          </AssociationSet>
+          <AssociationSet Name="fk_horario_semana" Association="Self.fk_horario_semana">
+            <End Role="semana" EntitySet="semana" />
+            <End Role="disponibilidad" EntitySet="disponibilidad" />
+          </AssociationSet>
+          <AssociationSet Name="horario_ibfk_1" Association="Self.horario_ibfk_1">
+            <End Role="curso" EntitySet="curso" />
+            <End Role="horario" EntitySet="horario" />
+          </AssociationSet>
+          <AssociationSet Name="horario_ibfk_2" Association="Self.horario_ibfk_2">
+            <End Role="hora" EntitySet="hora" />
+            <End Role="horario" EntitySet="horario" />
+          </AssociationSet>
+          <AssociationSet Name="horario_ibfk_3" Association="Self.horario_ibfk_3">
+            <End Role="hora" EntitySet="hora" />
+            <End Role="horario" EntitySet="horario" />
+          </AssociationSet>
+          <AssociationSet Name="horario_ibfk_4" Association="Self.horario_ibfk_4">
+            <End Role="semana" EntitySet="semana" />
+            <End Role="horario" EntitySet="horario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="horariModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="asignatura">
+          <Key>
+            <PropertyRef Name="idAsignatura" />
+          </Key>
+          <Property Name="idAsignatura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="clave" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cuatrimestre" Type="Int32" />
+          <NavigationProperty Name="asignaturacarrera" Relationship="Self.fk_asignaturacarrera_asignatura" FromRole="asignatura" ToRole="asignaturacarrera" />
+        </EntityType>
+        <EntityType Name="asignaturacarrera">
+          <Key>
+            <PropertyRef Name="idCarreraAsignatura" />
+          </Key>
+          <Property Name="idCarreraAsignatura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="carrera" Type="Int32" Nullable="false" />
+          <Property Name="asignatura" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="asignatura1" Relationship="Self.fk_asignaturacarrera_asignatura" FromRole="asignaturacarrera" ToRole="asignatura" />
+          <NavigationProperty Name="carrerarevoe" Relationship="Self.fk_asignaturacarrera_carrerarevoe" FromRole="asignaturacarrera" ToRole="carrerarevoe" />
+          <NavigationProperty Name="curso" Relationship="Self.fk_curso_asignatura" FromRole="asignaturacarrera" ToRole="curso" />
+        </EntityType>
+        <EntityType Name="carrera">
+          <Key>
+            <PropertyRef Name="idCarrera" />
+          </Key>
+          <Property Name="idCarrera" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="clave" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tipo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tipocarrera" Relationship="Self.fk_carrera_tipocarrera" FromRole="carrera" ToRole="tipocarrera" />
+          <NavigationProperty Name="carrerarevoe" Relationship="Self.fk_carrerarevoe_carrera" FromRole="carrera" ToRole="carrerarevoe" />
+        </EntityType>
+        <EntityType Name="carrerarevoe">
+          <Key>
+            <PropertyRef Name="idCarreraRevoe" />
+          </Key>
+          <Property Name="idCarreraRevoe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="carrera" Type="Int32" Nullable="false" />
+          <Property Name="revoe" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="asignaturacarrera" Relationship="Self.fk_asignaturacarrera_carrerarevoe" FromRole="carrerarevoe" ToRole="asignaturacarrera" />
+          <NavigationProperty Name="carrera1" Relationship="Self.fk_carrerarevoe_carrera" FromRole="carrerarevoe" ToRole="carrera" />
+          <NavigationProperty Name="revoe1" Relationship="Self.fk_carrerarevoe_revoe" FromRole="carrerarevoe" ToRole="revoe" />
+        </EntityType>
+        <EntityType Name="cuatrimestre">
+          <Key>
+            <PropertyRef Name="clave" />
+          </Key>
+          <Property Name="clave" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="curso" Relationship="Self.fk_curso_cuatrimestre" FromRole="cuatrimestre" ToRole="curso" />
+        </EntityType>
+        <EntityType Name="curso">
+          <Key>
+            <PropertyRef Name="idCurso" />
+          </Key>
+          <Property Name="idCurso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="grupo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cuatrimestre" Type="Int32" Nullable="false" />
+          <Property Name="turno" Type="Int32" Nullable="false" />
+          <Property Name="asignatura" Type="Int32" Nullable="false" />
+          <Property Name="control" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="asignaturacarrera" Relationship="Self.fk_curso_asignatura" FromRole="curso" ToRole="asignaturacarrera" />
+          <NavigationProperty Name="cuatrimestre1" Relationship="Self.fk_curso_cuatrimestre" FromRole="curso" ToRole="cuatrimestre" />
+          <NavigationProperty Name="profesor" Relationship="Self.fk_curso_control" FromRole="curso" ToRole="profesor" />
+          <NavigationProperty Name="grupo1" Relationship="Self.fk_curso_grupo" FromRole="curso" ToRole="grupo" />
+          <NavigationProperty Name="turno1" Relationship="Self.fk_curso_turno" FromRole="curso" ToRole="turno" />
+          <NavigationProperty Name="horario" Relationship="Self.horario_ibfk_1" FromRole="curso" ToRole="horario" />
+        </EntityType>
+        <EntityType Name="disponibilidad">
+          <Key>
+            <PropertyRef Name="idHorario" />
+          </Key>
+          <Property Name="idHorario" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="profesor" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="dia" Type="Int64" Nullable="false" />
+          <Property Name="horas" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="profesor1" Relationship="Self.fk_horario_profesor" FromRole="disponibilidad" ToRole="profesor" />
+          <NavigationProperty Name="semana" Relationship="Self.fk_horario_semana" FromRole="disponibilidad" ToRole="semana" />
+        </EntityType>
+        <EntityType Name="grupo">
+          <Key>
+            <PropertyRef Name="clave" />
+          </Key>
+          <Property Name="clave" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="turno" Type="Int32" />
+          <NavigationProperty Name="curso" Relationship="Self.fk_curso_grupo" FromRole="grupo" ToRole="curso" />
+          <NavigationProperty Name="turno1" Relationship="Self.fk_grupo_turno" FromRole="grupo" ToRole="turno" />
+        </EntityType>
+        <EntityType Name="hora">
+          <Key>
+            <PropertyRef Name="idHora" />
+          </Key>
+          <Property Name="idHora" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="momento" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="horario" Relationship="Self.horario_ibfk_2" FromRole="hora" ToRole="horario" />
+          <NavigationProperty Name="horario1" Relationship="Self.horario_ibfk_3" FromRole="hora" ToRole="horario" />
+        </EntityType>
+        <EntityType Name="horario">
+          <Key>
+            <PropertyRef Name="idHorario" />
+          </Key>
+          <Property Name="idHorario" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="curso" Type="Int32" Nullable="false" />
+          <Property Name="inicio" Type="Int64" Nullable="false" />
+          <Property Name="fin" Type="Int64" Nullable="false" />
+          <Property Name="dia" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="curso1" Relationship="Self.horario_ibfk_1" FromRole="horario" ToRole="curso" />
+          <NavigationProperty Name="hora" Relationship="Self.horario_ibfk_2" FromRole="horario" ToRole="hora" />
+          <NavigationProperty Name="hora1" Relationship="Self.horario_ibfk_3" FromRole="horario" ToRole="hora" />
+          <NavigationProperty Name="semana" Relationship="Self.horario_ibfk_4" FromRole="horario" ToRole="semana" />
+        </EntityType>
+        <EntityType Name="profesor">
+          <Key>
+            <PropertyRef Name="control" />
+          </Key>
+          <Property Name="control" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="primer" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="segundo" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="passwd" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="curso" Relationship="Self.fk_curso_control" FromRole="profesor" ToRole="curso" />
+          <NavigationProperty Name="disponibilidad" Relationship="Self.fk_horario_profesor" FromRole="profesor" ToRole="disponibilidad" />
+        </EntityType>
+        <EntityType Name="revoe">
+          <Key>
+            <PropertyRef Name="idRevoe" />
+          </Key>
+          <Property Name="idRevoe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="anio" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="carrerarevoe" Relationship="Self.fk_carrerarevoe_revoe" FromRole="revoe" ToRole="carrerarevoe" />
+        </EntityType>
+        <EntityType Name="semana">
+          <Key>
+            <PropertyRef Name="idSemana" />
+          </Key>
+          <Property Name="idSemana" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dia" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="disponibilidad" Relationship="Self.fk_horario_semana" FromRole="semana" ToRole="disponibilidad" />
+          <NavigationProperty Name="horario" Relationship="Self.horario_ibfk_4" FromRole="semana" ToRole="horario" />
+        </EntityType>
+        <EntityType Name="tipocarrera">
+          <Key>
+            <PropertyRef Name="idTipoCarrera" />
+          </Key>
+          <Property Name="idTipoCarrera" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="carrera" Relationship="Self.fk_carrera_tipocarrera" FromRole="tipocarrera" ToRole="carrera" />
+        </EntityType>
+        <EntityType Name="turno">
+          <Key>
+            <PropertyRef Name="clave" />
+          </Key>
+          <Property Name="clave" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="curso" Relationship="Self.fk_curso_turno" FromRole="turno" ToRole="curso" />
+          <NavigationProperty Name="grupo" Relationship="Self.fk_grupo_turno" FromRole="turno" ToRole="grupo" />
+        </EntityType>
+        <Association Name="fk_asignaturacarrera_asignatura">
+          <End Role="asignatura" Type="Self.asignatura" Multiplicity="1" />
+          <End Role="asignaturacarrera" Type="Self.asignaturacarrera" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="asignatura">
+              <PropertyRef Name="idAsignatura" />
+            </Principal>
+            <Dependent Role="asignaturacarrera">
+              <PropertyRef Name="asignatura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_asignaturacarrera_carrerarevoe">
+          <End Role="carrerarevoe" Type="Self.carrerarevoe" Multiplicity="1" />
+          <End Role="asignaturacarrera" Type="Self.asignaturacarrera" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="carrerarevoe">
+              <PropertyRef Name="idCarreraRevoe" />
+            </Principal>
+            <Dependent Role="asignaturacarrera">
+              <PropertyRef Name="carrera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_curso_asignatura">
+          <End Role="asignaturacarrera" Type="Self.asignaturacarrera" Multiplicity="1" />
+          <End Role="curso" Type="Self.curso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="asignaturacarrera">
+              <PropertyRef Name="idCarreraAsignatura" />
+            </Principal>
+            <Dependent Role="curso">
+              <PropertyRef Name="asignatura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_carrera_tipocarrera">
+          <End Role="tipocarrera" Type="Self.tipocarrera" Multiplicity="1" />
+          <End Role="carrera" Type="Self.carrera" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipocarrera">
+              <PropertyRef Name="idTipoCarrera" />
+            </Principal>
+            <Dependent Role="carrera">
+              <PropertyRef Name="tipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_carrerarevoe_carrera">
+          <End Role="carrera" Type="Self.carrera" Multiplicity="1" />
+          <End Role="carrerarevoe" Type="Self.carrerarevoe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="carrera">
+              <PropertyRef Name="idCarrera" />
+            </Principal>
+            <Dependent Role="carrerarevoe">
+              <PropertyRef Name="carrera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_carrerarevoe_revoe">
+          <End Role="revoe" Type="Self.revoe" Multiplicity="1" />
+          <End Role="carrerarevoe" Type="Self.carrerarevoe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="revoe">
+              <PropertyRef Name="idRevoe" />
+            </Principal>
+            <Dependent Role="carrerarevoe">
+              <PropertyRef Name="revoe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_curso_cuatrimestre">
+          <End Role="cuatrimestre" Type="Self.cuatrimestre" Multiplicity="1" />
+          <End Role="curso" Type="Self.curso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cuatrimestre">
+              <PropertyRef Name="clave" />
+            </Principal>
+            <Dependent Role="curso">
+              <PropertyRef Name="cuatrimestre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_curso_control">
+          <End Role="profesor" Type="Self.profesor" Multiplicity="0..1" />
+          <End Role="curso" Type="Self.curso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="profesor">
+              <PropertyRef Name="control" />
+            </Principal>
+            <Dependent Role="curso">
+              <PropertyRef Name="control" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_curso_grupo">
+          <End Role="grupo" Type="Self.grupo" Multiplicity="1" />
+          <End Role="curso" Type="Self.curso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="grupo">
+              <PropertyRef Name="clave" />
+            </Principal>
+            <Dependent Role="curso">
+              <PropertyRef Name="grupo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_curso_turno">
+          <End Role="turno" Type="Self.turno" Multiplicity="1" />
+          <End Role="curso" Type="Self.curso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="turno">
+              <PropertyRef Name="clave" />
+            </Principal>
+            <Dependent Role="curso">
+              <PropertyRef Name="turno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="horario_ibfk_1">
+          <End Role="curso" Type="Self.curso" Multiplicity="1" />
+          <End Role="horario" Type="Self.horario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="curso">
+              <PropertyRef Name="idCurso" />
+            </Principal>
+            <Dependent Role="horario">
+              <PropertyRef Name="curso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_horario_profesor">
+          <End Role="profesor" Type="Self.profesor" Multiplicity="0..1" />
+          <End Role="disponibilidad" Type="Self.disponibilidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="profesor">
+              <PropertyRef Name="control" />
+            </Principal>
+            <Dependent Role="disponibilidad">
+              <PropertyRef Name="profesor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_horario_semana">
+          <End Role="semana" Type="Self.semana" Multiplicity="1" />
+          <End Role="disponibilidad" Type="Self.disponibilidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="semana">
+              <PropertyRef Name="idSemana" />
+            </Principal>
+            <Dependent Role="disponibilidad">
+              <PropertyRef Name="dia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_grupo_turno">
+          <End Role="turno" Type="Self.turno" Multiplicity="0..1" />
+          <End Role="grupo" Type="Self.grupo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="turno">
+              <PropertyRef Name="clave" />
+            </Principal>
+            <Dependent Role="grupo">
+              <PropertyRef Name="turno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="horario_ibfk_2">
+          <End Role="hora" Type="Self.hora" Multiplicity="1" />
+          <End Role="horario" Type="Self.horario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hora">
+              <PropertyRef Name="idHora" />
+            </Principal>
+            <Dependent Role="horario">
+              <PropertyRef Name="fin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="horario_ibfk_3">
+          <End Role="hora" Type="Self.hora" Multiplicity="1" />
+          <End Role="horario" Type="Self.horario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hora">
+              <PropertyRef Name="idHora" />
+            </Principal>
+            <Dependent Role="horario">
+              <PropertyRef Name="inicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="horario_ibfk_4">
+          <End Role="semana" Type="Self.semana" Multiplicity="1" />
+          <End Role="horario" Type="Self.horario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="semana">
+              <PropertyRef Name="idSemana" />
+            </Principal>
+            <Dependent Role="horario">
+              <PropertyRef Name="dia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="horariEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="asignatura" EntityType="Self.asignatura" />
+          <EntitySet Name="asignaturacarrera" EntityType="Self.asignaturacarrera" />
+          <EntitySet Name="carrera" EntityType="Self.carrera" />
+          <EntitySet Name="carrerarevoe" EntityType="Self.carrerarevoe" />
+          <EntitySet Name="cuatrimestre" EntityType="Self.cuatrimestre" />
+          <EntitySet Name="curso" EntityType="Self.curso" />
+          <EntitySet Name="disponibilidad" EntityType="Self.disponibilidad" />
+          <EntitySet Name="grupo" EntityType="Self.grupo" />
+          <EntitySet Name="hora" EntityType="Self.hora" />
+          <EntitySet Name="horario" EntityType="Self.horario" />
+          <EntitySet Name="profesor" EntityType="Self.profesor" />
+          <EntitySet Name="revoe" EntityType="Self.revoe" />
+          <EntitySet Name="semana" EntityType="Self.semana" />
+          <EntitySet Name="tipocarrera" EntityType="Self.tipocarrera" />
+          <EntitySet Name="turno" EntityType="Self.turno" />
+          <AssociationSet Name="fk_asignaturacarrera_asignatura" Association="Self.fk_asignaturacarrera_asignatura">
+            <End Role="asignatura" EntitySet="asignatura" />
+            <End Role="asignaturacarrera" EntitySet="asignaturacarrera" />
+          </AssociationSet>
+          <AssociationSet Name="fk_asignaturacarrera_carrerarevoe" Association="Self.fk_asignaturacarrera_carrerarevoe">
+            <End Role="carrerarevoe" EntitySet="carrerarevoe" />
+            <End Role="asignaturacarrera" EntitySet="asignaturacarrera" />
+          </AssociationSet>
+          <AssociationSet Name="fk_curso_asignatura" Association="Self.fk_curso_asignatura">
+            <End Role="asignaturacarrera" EntitySet="asignaturacarrera" />
+            <End Role="curso" EntitySet="curso" />
+          </AssociationSet>
+          <AssociationSet Name="fk_carrera_tipocarrera" Association="Self.fk_carrera_tipocarrera">
+            <End Role="tipocarrera" EntitySet="tipocarrera" />
+            <End Role="carrera" EntitySet="carrera" />
+          </AssociationSet>
+          <AssociationSet Name="fk_carrerarevoe_carrera" Association="Self.fk_carrerarevoe_carrera">
+            <End Role="carrera" EntitySet="carrera" />
+            <End Role="carrerarevoe" EntitySet="carrerarevoe" />
+          </AssociationSet>
+          <AssociationSet Name="fk_carrerarevoe_revoe" Association="Self.fk_carrerarevoe_revoe">
+            <End Role="revoe" EntitySet="revoe" />
+            <End Role="carrerarevoe" EntitySet="carrerarevoe" />
+          </AssociationSet>
+          <AssociationSet Name="fk_curso_cuatrimestre" Association="Self.fk_curso_cuatrimestre">
+            <End Role="cuatrimestre" EntitySet="cuatrimestre" />
+            <End Role="curso" EntitySet="curso" />
+          </AssociationSet>
+          <AssociationSet Name="fk_curso_control" Association="Self.fk_curso_control">
+            <End Role="profesor" EntitySet="profesor" />
+            <End Role="curso" EntitySet="curso" />
+          </AssociationSet>
+          <AssociationSet Name="fk_curso_grupo" Association="Self.fk_curso_grupo">
+            <End Role="grupo" EntitySet="grupo" />
+            <End Role="curso" EntitySet="curso" />
+          </AssociationSet>
+          <AssociationSet Name="fk_curso_turno" Association="Self.fk_curso_turno">
+            <End Role="turno" EntitySet="turno" />
+            <End Role="curso" EntitySet="curso" />
+          </AssociationSet>
+          <AssociationSet Name="horario_ibfk_1" Association="Self.horario_ibfk_1">
+            <End Role="curso" EntitySet="curso" />
+            <End Role="horario" EntitySet="horario" />
+          </AssociationSet>
+          <AssociationSet Name="fk_horario_profesor" Association="Self.fk_horario_profesor">
+            <End Role="profesor" EntitySet="profesor" />
+            <End Role="disponibilidad" EntitySet="disponibilidad" />
+          </AssociationSet>
+          <AssociationSet Name="fk_horario_semana" Association="Self.fk_horario_semana">
+            <End Role="semana" EntitySet="semana" />
+            <End Role="disponibilidad" EntitySet="disponibilidad" />
+          </AssociationSet>
+          <AssociationSet Name="fk_grupo_turno" Association="Self.fk_grupo_turno">
+            <End Role="turno" EntitySet="turno" />
+            <End Role="grupo" EntitySet="grupo" />
+          </AssociationSet>
+          <AssociationSet Name="horario_ibfk_2" Association="Self.horario_ibfk_2">
+            <End Role="hora" EntitySet="hora" />
+            <End Role="horario" EntitySet="horario" />
+          </AssociationSet>
+          <AssociationSet Name="horario_ibfk_3" Association="Self.horario_ibfk_3">
+            <End Role="hora" EntitySet="hora" />
+            <End Role="horario" EntitySet="horario" />
+          </AssociationSet>
+          <AssociationSet Name="horario_ibfk_4" Association="Self.horario_ibfk_4">
+            <End Role="semana" EntitySet="semana" />
+            <End Role="horario" EntitySet="horario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="horariModelStoreContainer" CdmEntityContainer="horariEntities">
+          <EntitySetMapping Name="asignatura">
+            <EntityTypeMapping TypeName="horariModel.asignatura">
+              <MappingFragment StoreEntitySet="asignatura">
+                <ScalarProperty Name="idAsignatura" ColumnName="idAsignatura" />
+                <ScalarProperty Name="clave" ColumnName="clave" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="cuatrimestre" ColumnName="cuatrimestre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="asignaturacarrera">
+            <EntityTypeMapping TypeName="horariModel.asignaturacarrera">
+              <MappingFragment StoreEntitySet="asignaturacarrera">
+                <ScalarProperty Name="idCarreraAsignatura" ColumnName="idCarreraAsignatura" />
+                <ScalarProperty Name="carrera" ColumnName="carrera" />
+                <ScalarProperty Name="asignatura" ColumnName="asignatura" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="carrera">
+            <EntityTypeMapping TypeName="horariModel.carrera">
+              <MappingFragment StoreEntitySet="carrera">
+                <ScalarProperty Name="idCarrera" ColumnName="idCarrera" />
+                <ScalarProperty Name="clave" ColumnName="clave" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="carrerarevoe">
+            <EntityTypeMapping TypeName="horariModel.carrerarevoe">
+              <MappingFragment StoreEntitySet="carrerarevoe">
+                <ScalarProperty Name="idCarreraRevoe" ColumnName="idCarreraRevoe" />
+                <ScalarProperty Name="carrera" ColumnName="carrera" />
+                <ScalarProperty Name="revoe" ColumnName="revoe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cuatrimestre">
+            <EntityTypeMapping TypeName="horariModel.cuatrimestre">
+              <MappingFragment StoreEntitySet="cuatrimestre">
+                <ScalarProperty Name="clave" ColumnName="clave" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="curso">
+            <EntityTypeMapping TypeName="horariModel.curso">
+              <MappingFragment StoreEntitySet="curso">
+                <ScalarProperty Name="idCurso" ColumnName="idCurso" />
+                <ScalarProperty Name="grupo" ColumnName="grupo" />
+                <ScalarProperty Name="cuatrimestre" ColumnName="cuatrimestre" />
+                <ScalarProperty Name="turno" ColumnName="turno" />
+                <ScalarProperty Name="asignatura" ColumnName="asignatura" />
+                <ScalarProperty Name="control" ColumnName="control" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="disponibilidad">
+            <EntityTypeMapping TypeName="horariModel.disponibilidad">
+              <MappingFragment StoreEntitySet="disponibilidad">
+                <ScalarProperty Name="idHorario" ColumnName="idHorario" />
+                <ScalarProperty Name="profesor" ColumnName="profesor" />
+                <ScalarProperty Name="dia" ColumnName="dia" />
+                <ScalarProperty Name="horas" ColumnName="horas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="grupo">
+            <EntityTypeMapping TypeName="horariModel.grupo">
+              <MappingFragment StoreEntitySet="grupo">
+                <ScalarProperty Name="clave" ColumnName="clave" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="turno" ColumnName="turno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hora">
+            <EntityTypeMapping TypeName="horariModel.hora">
+              <MappingFragment StoreEntitySet="hora">
+                <ScalarProperty Name="idHora" ColumnName="idHora" />
+                <ScalarProperty Name="momento" ColumnName="momento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="horario">
+            <EntityTypeMapping TypeName="horariModel.horario">
+              <MappingFragment StoreEntitySet="horario">
+                <ScalarProperty Name="idHorario" ColumnName="idHorario" />
+                <ScalarProperty Name="curso" ColumnName="curso" />
+                <ScalarProperty Name="inicio" ColumnName="inicio" />
+                <ScalarProperty Name="fin" ColumnName="fin" />
+                <ScalarProperty Name="dia" ColumnName="dia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="profesor">
+            <EntityTypeMapping TypeName="horariModel.profesor">
+              <MappingFragment StoreEntitySet="profesor">
+                <ScalarProperty Name="control" ColumnName="control" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="primer" ColumnName="primer" />
+                <ScalarProperty Name="segundo" ColumnName="segundo" />
+                <ScalarProperty Name="passwd" ColumnName="passwd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="revoe">
+            <EntityTypeMapping TypeName="horariModel.revoe">
+              <MappingFragment StoreEntitySet="revoe">
+                <ScalarProperty Name="idRevoe" ColumnName="idRevoe" />
+                <ScalarProperty Name="anio" ColumnName="anio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="semana">
+            <EntityTypeMapping TypeName="horariModel.semana">
+              <MappingFragment StoreEntitySet="semana">
+                <ScalarProperty Name="idSemana" ColumnName="idSemana" />
+                <ScalarProperty Name="dia" ColumnName="dia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipocarrera">
+            <EntityTypeMapping TypeName="horariModel.tipocarrera">
+              <MappingFragment StoreEntitySet="tipocarrera">
+                <ScalarProperty Name="idTipoCarrera" ColumnName="idTipoCarrera" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="turno">
+            <EntityTypeMapping TypeName="horariModel.turno">
+              <MappingFragment StoreEntitySet="turno">
+                <ScalarProperty Name="clave" ColumnName="clave" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

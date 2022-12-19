@@ -1,0 +1,45 @@
+﻿body {
+    position: relative;
+}
+
+
+
+@media screen and (min-width: 1200px) {
+
+    .contenedor {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
+    .text-box {
+        border-style: solid;
+        border-block-color: #7B7C7A;
+        border-radius: 5px;
+        margin: auto;
+        color: #000000;
+        width: 500px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+
+    .btn-login {
+        text-align: center;
+        border-style: none;
+        border-radius: 5px;
+        background-color: #4551E6;
+        color: #ffffff;
+        font-size: 1.2em;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+
+
+}
+
+
+    
