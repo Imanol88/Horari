@@ -236,6 +236,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\CSS\Disponibilidad.css" />
     <Content Include="Content\Disponibilidad.css" />
     <Content Include="Content\Login.css" />
     <Content Include="favicon.ico" />
@@ -288,6 +289,10 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Disponibilidad\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Disponibilidad\DisponibilidadMatutino.cshtml" />
+    <Content Include="Views\Disponibilidad\DisponibilidadVespertino.cshtml" />
+    <Content Include="Views\Disponibilidad\DisponibilidadTodo.cshtml" />
+    <Content Include="Views\Disponibilidad\DisponibilidadNocturno.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

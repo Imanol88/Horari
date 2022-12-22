@@ -1,0 +1,237 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/Content/CSS/Disponibilidad.css" type="text/css">
+
+    <script>
+        window.onload = function ()
+        {
+            setColor();
+        }
+    </script>
+
+</head>
+<body>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Lunes</th>
+                <th scope="col">Martes</th>
+                <th scope="col">Miercoles</th>
+                <th scope="col">Jueves</th>
+                <th scope="col">Viernes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">07:00</th>
+                <td id="l1" onclick="agregar(2,1,'#l1')"></td>
+                <td id="m1" onclick="agregar(3,1,'#m1')"></td>
+                <td id="x1" onclick="agregar(4,1,'#x1')"></td>
+                <td id="j1" onclick="agregar(5,1,'#j1')"></td>
+                <td id="v1" onclick="agregar(6,1,'#v1')"></td>
+            </tr>
+            <tr>
+                <th scope="row">08:00</th>
+                <td id="l2" onclick="agregar(2,2,'#l2')"></td>
+                <td id="m2" onclick="agregar(3,2,'#m2')"></td>
+                <td id="x2" onclick="agregar(4,2,'#x2')"></td>
+                <td id="j2" onclick="agregar(5,2,'#j2')"></td>
+                <td id="v2" onclick="agregar(6,2,'#v2')"></td>
+            </tr>
+            <tr>
+                <th scope="row">09:00</th>
+                <td id="l3" onclick="agregar(2,3,'#l3')"></td>
+                <td id="m3" onclick="agregar(3,3,'#m3')"></td>
+                <td id="x3" onclick="agregar(4,3,'#x3')"></td>
+                <td id="j3" onclick="agregar(5,3,'#j3')"></td>
+                <td id="v3" onclick="agregar(6,3,'#v3')"></td>
+            </tr>
+            <tr>
+                <th scope="row">10:00</th>
+                <td id="l4" onclick="agregar(2,4,'#l4')"></td>
+                <td id="m4" onclick="agregar(3,4,'#m4')"></td>
+                <td id="x4" onclick="agregar(4,4,'#x4')"></td>
+                <td id="j4" onclick="agregar(5,4,'#j4')"></td>
+                <td id="v4" onclick="agregar(6,4,'#v4')"></td>
+            </tr>
+            <tr>
+                <th scope="row">11:00</th>
+                <td id="l5" onclick="agregar(2,5,'#l5')"></td>
+                <td id="m5" onclick="agregar(3,5,'#m5')"></td>
+                <td id="x5" onclick="agregar(4,5,'#x5')"></td>
+                <td id="j5" onclick="agregar(5,5,'#j5')"></td>
+                <td id="v5" onclick="agregar(6,5,'#v5')"></td>
+            </tr>
+            <tr>
+                <th scope="row">12:00</th>
+                <td id="l6" onclick="agregar(2,6,'#l6')"></td>
+                <td id="m6" onclick="agregar(3,6,'#m6')"></td>
+                <td id="x6" onclick="agregar(4,6,'#x6')"></td>
+                <td id="j6" onclick="agregar(5,6,'#j6')"></td>
+                <td id="v6" onclick="agregar(6,6,'#v6')"></td>
+            </tr>
+            <tr>
+                <th scope="row">13:00</th>
+                <td id="l7" onclick="agregar(2,7,'#l7')"></td>
+                <td id="m7" onclick="agregar(3,7,'#m7')"></td>
+                <td id="x7" onclick="agregar(4,7,'#x7')"></td>
+                <td id="j7" onclick="agregar(5,7,'#j7')"></td>
+                <td id="v7" onclick="agregar(6,7,'#v7')"></td>
+            </tr>
+            <tr>
+                <th scope="row">14:00</th>
+                <td id="l8" onclick="agregar(2,8,'#l8')"></td>
+                <td id="m8" onclick="agregar(3,8,'#m8')"></td>
+                <td id="x8" onclick="agregar(4,8,'#x8')"></td>
+                <td id="j8" onclick="agregar(5,8,'#j8')"></td>
+                <td id="v8" onclick="agregar(6,8,'#v8')"></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <script language="javascript" type="text/javascript">
+
+        let lunesarray = []
+        lunesarray.length = 17;
+        let martesarray = []
+        martesarray.length = 17;
+        let miercolesarray = []
+        miercolesarray.length = 17;
+        let juevesarray = []
+        juevesarray.length = 17;
+        let viernesarray = []
+        viernesarray.length = 17;
+
+
+
+        function setColor()
+        {
+            for ( i = 0; i < document.getElementsByTagName( "td" ).length; i++ )
+            {
+
+                document.getElementsByTagName( "td" )[ i ].style.backgroundColor = 'green';
+               
+            }
+        }
+
+
+        function agregar( dia, hora, id)
+        {
+
+             
+           
+            var id_element = id;
+
+
+            if ( dia == 2)
+            {
+                if ( lunesarray[ hora ] == null )
+                {
+                    lunesarray[ hora ] = "l" + hora + " - ";
+                    $( id_element ).css( { 'background-color': 'blue' } );
+                } else
+                {
+                    lunesarray[ hora ] = null;
+                    $( id_element ).css( { 'background-color': 'green' } );   
+                }
+                
+            }else if ( dia == 3)
+            {
+                if ( martesarray[ hora ] == null )
+                {
+                    martesarray[ hora ] = "m" + hora + " - ";
+                    $( id_element ).css( { 'background-color': 'blue' } );
+                } else
+                {
+                    martesarray[ hora ] = null;
+                    $( id_element ).css( { 'background-color': 'green' } );   
+                }
+                
+            }else  if ( dia == 4)
+            {
+                if ( miercolesarray[ hora ] == null )
+                {
+                    miercolesarray[ hora ] = "x" + hora + " - ";
+                    $( id_element ).css( { 'background-color': 'blue' } );
+                } else
+                {
+                    miercolesarray[ hora ] = null;
+                    $( id_element ).css( { 'background-color': 'green' } );  
+                }
+                
+            } else if ( dia == 5 )
+            {
+                if ( juevesarray[ hora ] == null )
+                {
+                    juevesarray[ hora ] = "j" + hora + " - ";
+                    $( id_element ).css( { 'background-color': 'blue' } );
+                } else
+                {
+                    juevesarray[ hora ] = null;
+                    $( id_element ).css( { 'background-color': 'green' } );   
+                }
+                
+            }else if ( dia == 6)
+            {
+                if ( viernesarray[ hora ] == null )
+                {
+                    viernesarray[ hora ] = "v" + hora + " - ";
+                    $( id_element ).css( { 'background-color': 'blue' } );
+                } else
+                {
+                    viernesarray[ hora ] = null;
+                    $( id_element ).css( { 'background-color': 'green' } ); 
+                }
+                
+            } 
+
+
+        }
+        function enviar()
+        {
+            var strlunes = lunesarray.join()
+            var strmartes = martesarray.join()
+            var strmiercoles = miercolesarray.join()
+            var strjueves = juevesarray.join()
+            var strviernes = viernesarray.join()
+            var model = {
+                Lunes: strlunes,
+                Martes: strmartes,
+                Miercoles: strmiercoles,
+                Jueves: strjueves,
+                Viernes: strviernes
+            }
+            $.ajax( {
+                type: "POST",
+                url: "/Disponibilidad/GuardarDisponibilidad",
+                data: JSON.stringify( model ),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                failure: function ( response )
+                {
+                    alert( response.d );
+                }
+            } );
+            alert( "Enviados" )
+        }
+    </script>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

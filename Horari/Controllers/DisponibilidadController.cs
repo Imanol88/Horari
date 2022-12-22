@@ -129,6 +129,31 @@ namespace Horari.Controllers
 
 
 
+        public ActionResult DisponibilidadTodo ( )
+        {
+            // Codigo
+            return PartialView();
+        }
+
+        public ActionResult DisponibilidadMatutino ( )
+        {
+            // Codigo
+            return PartialView();
+        }
+
+        public ActionResult DisponibilidadVespertino ( )
+        {
+            // Codigo
+            return PartialView();
+        }
+
+
+        public ActionResult DisponibilidadNocturno ( )
+        {
+            // Codigo
+            return PartialView();
+        }
+
 
     }
 

@@ -5,308 +5,86 @@
 
 <head>
     <link rel="stylesheet" href="~/Content/Disponibilidad.css">
+    <title>Test</title>
+    <script>
+        window.onload = function ()
+        {
+            todo();
+        }
+    </script>
+   
 </head>
-
 
 <h2>Disponibilidad</h2>
 
+<body>
 
-<div class="row">
-    <div class="col-md-12">
+    
+    <label for="turnos">Hoarios</label>
+    <select name="turnos" id="turnos" onchange="changeFunc();">
+        <option value="todo">Todo</option>
+        <option value="matutino">Matutino</option>
+        <option value="vespertino">Vespertino</option>
+        <option value="nocturno">Nocturno</option>
+    </select>
 
-        <table>
-            <tr class="dias">
-                <th>Lunes</th>
-                <th>Martes</th>
-                <th>Miercoles</th>
-                <th>Jueves</th>
-                <th>Viernes</th>
-            </tr>
 
-            <tr>
-                <th>
-                    <div class="checkbox-hora">
-                        <p>07:00</p>
-                        <input id="l1" type="checkbox" onclick="agregar(2,1,'#l1')" />
-                        <p>08:00</p>
-                        <input id="l2" type="checkbox" onclick="agregar(2,2,'#l2')" />
-                        <p>09:00</p>
-                        <input id="l3" type="checkbox" onclick="agregar(2,3,'#l3')" />
-                        <p>10:00</p>
-                        <input id="l4" type="checkbox" onclick="agregar(2,4,'#l4')" />
-                        <p>11:00</p>
-                        <input id="l5" type="checkbox" onclick="agregar(2,5,'#l5')" />
-                        <p>12:00</p>
-                        <input id="l6" type="checkbox" onclick="agregar(2,6,'#l6')" />
-                        <p>13:00</p>
-                        <input id="l7" type="checkbox" onclick="agregar(2,7,'#l7')" />
-                        <p>14:00</p>
-                        <input id="l8" type="checkbox" onclick="agregar(2,8,'#l8')" />
-                        <p>15:00</p>
-                        <input id="l9" type="checkbox" onclick="agregar(2,9,'#l9')" />
-                        <p>16:00</p>
-                        <input id="l10" type="checkbox" onclick="agregar(2,10,'#l10')" />
-                        <p>17:00</p>
-                        <input id="l11" type="checkbox" onclick="agregar(2,11,'#l11')" />
-                        <p>18:00</p>
-                        <input id="l12" type="checkbox" onclick="agregar(2,12,'#l12')" />
-                        <p>19:00</p>
-                        <input id="l13" type="checkbox" onclick="agregar(2,13,'#l13')" />
-                        <p>20:00</p>
-                        <input id="l14" type="checkbox" onclick="agregar(2,14,'#l14')" />
-                        <p>21:00</p>
-                        <input id="l15" type="checkbox" onclick="agregar(2,15,'#l15')" />
-                        <p>22:00</p>
-                        <input id="l16" type="checkbox" onclick="agregar(2,16,'#l16')" />
-                        <p>23:00</p>
-                        <input id="l17" type="checkbox" onclick="agregar(2,17,'#l17')" />
-                    </div>
-                </th>
-
-                <th>
-                    <div class="checkbox-hora">
-                        <p>07:00</p>
-                        <input id="m1" type="checkbox" onclick="agregar(3,1,'#m1')" />
-                        <p>08:00</p>
-                        <input id="m2" type="checkbox" onclick="agregar(3,2,'#m2')" />
-                        <p>09:00</p>
-                        <input id="m3" type="checkbox" onclick="agregar(3,3,'#m3')" />
-                        <p>10:00</p>
-                        <input id="m4" type="checkbox" onclick="agregar(3,4,'#m4')" />
-                        <p>11:00</p>
-                        <input id="m5" type="checkbox" onclick="agregar(3,5,'#m5')" />
-                        <p>12:00</p>
-                        <input id="m6" type="checkbox" onclick="agregar(3,6,'#m6')" />
-                        <p>13:00</p>
-                        <input id="m7" type="checkbox" onclick="agregar(3,7,'#m7')" />
-                        <p>14:00</p>
-                        <input id="m8" type="checkbox" onclick="agregar(3,8,'#m8')" />
-                        <p>15:00</p>
-                        <input id="m9" type="checkbox" onclick="agregar(3,9,'#m9')" />
-                        <p>16:00</p>
-                        <input id="m10" type="checkbox" onclick="agregar(3,10,'#m10')" />
-                        <p>17:00</p>
-                        <input id="m11" type="checkbox" onclick="agregar(3,11,'#m11')" />
-                        <p>18:00</p>
-                        <input id="m12" type="checkbox" onclick="agregar(3,12,'#m12')" />
-                        <p>19:00</p>
-                        <input id="m13" type="checkbox" onclick="agregar(3,13,'#m13')" />
-                        <p>20:00</p>
-                        <input id="m14" type="checkbox" onclick="agregar(3,14,'#m14')" />
-                        <p>21:00</p>
-                        <input id="m15" type="checkbox" onclick="agregar(3,15,'#m15')" />
-                        <p>22:00</p>
-                        <input id="m16" type="checkbox" onclick="agregar(3,16,'#m16')" />
-                        <p>23:00</p>
-                        <input id="m17" type="checkbox" onclick="agregar(3,17,'#m17')" />
-                    </div>
-                </th>
-
-                <th>
-                    <div class="checkbox-hora">
-                        <p>07:00</p>
-                        <input id="x1" type="checkbox" onclick="agregar(4,1,'#x1')" />
-                        <p>08:00</p>
-                        <input id="x2" type="checkbox" onclick="agregar(4,2,'#x2')" />
-                        <p>09:00</p>
-                        <input id="x3" type="checkbox" onclick="agregar(4,3,'#x3')" />
-                        <p>10:00</p>
-                        <input id="x4" type="checkbox" onclick="agregar(4,4,'#x4')" />
-                        <p>11:00</p>
-                        <input id="x5" type="checkbox" onclick="agregar(4,5,'#x5')" />
-                        <p>12:00</p>
-                        <input id="x6" type="checkbox" onclick="agregar(4,6,'#x6')" />
-                        <p>13:00</p>
-                        <input id="x7" type="checkbox" onclick="agregar(4,7,'#x7')" />
-                        <p>14:00</p>
-                        <input id="x8" type="checkbox" onclick="agregar(4,8,'#x8')" />
-                        <p>15:00</p>
-                        <input id="x9" type="checkbox" onclick="agregar(4,9,'#x9')" />
-                        <p>16:00</p>
-                        <input id="x10" type="checkbox" onclick="agregar(4,10,'#x10')" />
-                        <p>17:00</p>
-                        <input id="x11" type="checkbox" onclick="agregar(4,11,'#x11')" />
-                        <p>18:00</p>
-                        <input id="x12" type="checkbox" onclick="agregar(4,12,'#x12')" />
-                        <p>19:00</p>
-                        <input id="x13" type="checkbox" onclick="agregar(4,13,'#x13')" />
-                        <p>20:00</p>
-                        <input id="x14" type="checkbox" onclick="agregar(4,14,'#x14')" />
-                        <p>21:00</p>
-                        <input id="x15" type="checkbox" onclick="agregar(4,15,'#x15')" />
-                        <p>22:00</p>
-                        <input id="x16" type="checkbox" onclick="agregar(4,16,'#x16')" />
-                        <p>23:00</p>
-                        <input id="x17" type="checkbox" onclick="agregar(4,17,'#x17')" />
-                    </div>
-                </th>
-
-                <th>
-                    <div class="checkbox-hora">
-                        <p>07:00</p>
-                        <input id="j1" type="checkbox" onclick="agregar(5,1,'#j1')" />
-                        <p>08:00</p>
-                        <input id="j2" type="checkbox" onclick="agregar(5,2,'#j2')" />
-                        <p>09:00</p>
-                        <input id="j3" type="checkbox" onclick="agregar(5,3,'#j3')" />
-                        <p>10:00</p>
-                        <input id="j4" type="checkbox" onclick="agregar(5,4,'#j4')" />
-                        <p>11:00</p>
-                        <input id="j5" type="checkbox" onclick="agregar(5,5,'#j5')" />
-                        <p>12:00</p>
-                        <input id="j6" type="checkbox" onclick="agregar(5,6,'#j6')" />
-                        <p>13:00</p>
-                        <input id="j7" type="checkbox" onclick="agregar(5,7,'#j7')" />
-                        <p>14:00</p>
-                        <input id="j8" type="checkbox" onclick="agregar(5,8,'#j8')" />
-                        <p>15:00</p>
-                        <input id="j9" type="checkbox" onclick="agregar(5,9,'#j9')" />
-                        <p>16:00</p>
-                        <input id="j10" type="checkbox" onclick="agregar(5,10,'#j10')" />
-                        <p>17:00</p>
-                        <input id="j11" type="checkbox" onclick="agregar(5,11,'#j11')" />
-                        <p>18:00</p>
-                        <input id="j12" type="checkbox" onclick="agregar(5,12,'#j12')" />
-                        <p>19:00</p>
-                        <input id="j13" type="checkbox" onclick="agregar(5,13,'#j13')" />
-                        <p>20:00</p>
-                        <input id="j14" type="checkbox" onclick="agregar(5,14,'#j14')" />
-                        <p>21:00</p>
-                        <input id="j15" type="checkbox" onclick="agregar(5,15,'#j15')" />
-                        <p>22:00</p>
-                        <input id="j16" type="checkbox" onclick="agregar(5,16,'#j16')" />
-                        <p>23:00</p>
-                        <input id="j17" type="checkbox" onclick="agregar(5,17,'#j17')" />
-                    </div>
-                </th>
-
-                <th>
-                    <div class="checkbox-hora">
-                        <p>07:00</p>
-                        <input id="v1" type="checkbox" onclick="agregar(6,1,'#v1')" />
-                        <p>08:00</p>
-                        <input id="v2" type="checkbox" onclick="agregar(6,2,'#v2')" />
-                        <p>09:00</p>
-                        <input id="v3" type="checkbox" onclick="agregar(6,3,'#v3')" />
-                        <p>10:00</p>
-                        <input id="v4" type="checkbox" onclick="agregar(6,4,'#v4')" />
-                        <p>11:00</p>
-                        <input id="v5" type="checkbox" onclick="agregar(6,5,'#v5')" />
-                        <p>12:00</p>
-                        <input id="v6" type="checkbox" onclick="agregar(6,6,'#v6')" />
-                        <p>13:00</p>
-                        <input id="v7" type="checkbox" onclick="agregar(6,7,'#v7')" />
-                        <p>14:00</p>
-                        <input id="v8" type="checkbox" onclick="agregar(6,8,'#v8')" />
-                        <p>15:00</p>
-                        <input id="v9" type="checkbox" onclick="agregar(6,9,'#v9')" />
-                        <p>16:00</p>
-                        <input id="v10" type="checkbox" onclick="agregar(6,10,'#v10')" />
-                        <p>17:00</p>
-                        <input id="v11" type="checkbox" onclick="agregar(6,11,'#v11')" />
-                        <p>18:00</p>
-                        <input id="v12" type="checkbox" onclick="agregar(6,12,'#v12')" />
-                        <p>19:00</p>
-                        <input id="v13" type="checkbox" onclick="agregar(6,13,'#v13')" />
-                        <p>20:00</p>
-                        <input id="v14" type="checkbox" onclick="agregar(6,14,'#v14')" />
-                        <p>21:00</p>
-                        <input id="v15" type="checkbox" onclick="agregar(6,15,'#v15')" />
-                        <p>22:00</p>
-                        <input id="v16" type="checkbox" onclick="agregar(6,16,'#v16')" />
-                        <p>23:00</p>
-                        <input id="v17" type="checkbox" onclick="agregar(6,17,'#v17')" />
-                    </div>
-                </th>
-            </tr>
-        </table>
-
-        <input type="button" value="Capturar" class="btn-capturar" onclick="enviar()"/>
-       
+    <div id="vistaTodo">
+        @{Html.RenderAction("DisponibilidadTodo", "Disponibilidad");}
     </div>
-</div>
+    <div id="vistaMatutino">
+        @{Html.RenderAction("DisponibilidadMatutino", "Disponibilidad");}
+    </div>
+    <div id="vistaVespertino">
+        @{Html.RenderAction("DisponibilidadVespertino", "Disponibilidad");}
+    </div>
+    <div id="vistaNocturno">
+        @{Html.RenderAction("DisponibilidadNocturno", "Disponibilidad");}
+    </div>
 
+
+
+
+</body>
 <script language="javascript" type="text/javascript">
 
-    let lunesarray = []
-    lunesarray.length = 17;
 
-    let martesarray = []
-    martesarray.length = 17;
-
-    let miercolesarray = []
-    miercolesarray.length = 17;
-
-    let juevesarray = []
-    juevesarray.length = 17;
-
-    let viernesarray = []
-    viernesarray.length = 17;
-
-    function agregar(dia, hora, id) {
-
-        var id_element = id;
-
-        if ($(id_element).is(':checked')) {
-
-            if (dia == 2) {
-                lunesarray[hora] = "l" + hora + " - "
-            } else if (dia == 3) {
-                martesarray[hora] = "m" + hora + " - "
-            } else if (dia == 4) {
-                miercolesarray[hora] = "x" + hora + " - "
-            } else if (dia == 5) {
-                juevesarray[hora] = "j" + hora + " - "
-            } else if (dia == 6) {
-                viernesarray[hora] = "v" + hora + " - "
-            }
-
-        } else if (($(id_element).is(':checked')) == false) {
-
-            if (dia == 2) {
-                lunesarray[hora] = ""
-            } else if (dia == 3) {
-                martesarray[hora] = ""
-            } else if (dia == 4) {
-                miercolesarray[hora] = ""
-            } else if (dia == 5) {
-                juevesarray[hora] = ""
-            } else if (dia == 6) {
-                viernesarray[hora] = ""
-            }
+    function changeFunc()
+    {
+        var selectBox = document.getElementById( "turnos" );
+        var selectedValue = selectBox.options[ selectBox.selectedIndex ].value;
+        if ( selectedValue == "todo" )
+        {
+            resetViews();
+            $( '#vistaTodo' ).css( 'display', 'block' );
+        } else if ( selectedValue == "matutino" )
+        {
+            resetViews();
+            $( '#vistaMatutino' ).css( 'display', 'block' );
+        } else if ( selectedValue == "vespertino" )
+        {
+            resetViews();
+            $( '#vistaVespertino' ).css( 'display', 'block' );
+        } else if ( selectedValue == "nocturno" )
+        {
+            resetViews();
+            $( '#vistaNocturno' ).css( 'display', 'block' );
         }
-
     }
 
 
-    function enviar() {
+    function resetViews()
+    {
+        $( '#vistaTodo' ).css( 'display', 'none' );
+        $( '#vistaMatutino' ).css( 'display', 'none' );
+        $( '#vistaVespertino' ).css( 'display', 'none' );
+        $( '#vistaNocturno' ).css( 'display', 'none' );
+    }
 
-        var strlunes = lunesarray.join()
-        var strmartes = martesarray.join()
-        var strmiercoles = miercolesarray.join()
-        var strjueves = juevesarray.join()
-        var strviernes = viernesarray.join()
-
-        var model = {
-            Lunes: strlunes,
-            Martes: strmartes,
-            Miercoles: strmiercoles,
-            Jueves: strjueves,
-            Viernes: strviernes
-        }
-
-        $.ajax({
-            type: "POST",
-            url: "/Disponibilidad/GuardarDisponibilidad",
-            data: JSON.stringify(model),
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            failure: function (response) {
-                alert(response.d);
-            }
-        });
-
-        alert("Enviados")
+    function todo()
+    {
+        resetViews();
+        $( '#vistaTodo' ).css( 'display', 'block' );
     }
 
 

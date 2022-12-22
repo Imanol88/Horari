@@ -1,0 +1,13 @@
+﻿body {
+    
+}
+
+.selected{
+    color: blue;
+}
+
+
+.noselected{
+    color: green;
+    background-color: green;
+}
